@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
             background-color: #f8f9fa;
+            text-align: center;
         }
 
         header {
@@ -57,26 +58,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px;
-            text-align: center;
+            flex-wrap: wrap;
+            gap: 10px; /* Reduces space between items */
         }
-        .main-container img {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px;
-            border-radius: 10px;
+        .screenshot-gallery {
+            flex: 1;
+            background-color: #e9ecef;
+            /*padding: 40px 20px;*/
+            border-radius: 8px;
+            margin-top: 0;
+        }
+        screenshot-gallery img {
+           flex: 1 1 500px;
         }
 
-        .content {
-            text-align: center;
-            padding: 50px 20px;
-        }
         .signup-container {
             flex: 1;
             background-color: #e9ecef;
-            padding: 40px 20px;
+            /*padding: 40px 20px;*/
             border-radius: 8px;
             margin-top: 0;
         }
@@ -156,10 +156,9 @@
 
 <body>
     <header>
-        <img src="logo-placeholder.png" alt="RevilAItion Logo"> <!-- Logo Placeholder -->
+        <img src="/Images/Revilaition.png" alt="RevilAItion Logo"> <!-- Logo Placeholder -->
         <h1>Welcome to RevilAItion</h1>
         <p class="strapline">Transforming the way you learn with AI-powered education</p>
-        <p class="cta"><strong>Learn Better, Faster.</strong></p>
     </header>
     <div class="content">
         <h2>Your Path to Smarter Learning Starts Here</h2>
@@ -169,6 +168,7 @@
     <div class="main-container">
      <!-- Screenshot Section -->
      <div class="screenshot-gallery">
+            <p class="cta"><strong>Learn Better, Faster.</strong></p>
             <!-- Replace these images with your actual platform screenshots -->
             <img src="https://via.placeholder.com/600x400" alt="Screenshot 1">
             <img src="https://via.placeholder.com/600x400" alt="Screenshot 2">
