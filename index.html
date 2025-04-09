@@ -5,23 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RevilAItion - Learn Better, Faster</title>
+    <title>RevilAItion | Learn Better, Faster</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
         }
 
         header {
+            align-items: center;
+            justify-content: space-between;
             background-color: #003366;
-            color: white;
+            color: #ffffff;
+            padding: 20px;
             text-align: center;
-            padding: 50px 20px;
         }
 
-        header h1 {
+        header img {
+            max-height: 500px; /* Adjust logo size */
+            max-width: 500px;
+            position: absolute;
+            right: 20px; /* Adjust the distance from the right edge */
+            top: 20px;   /* Adjust the distance from the top edge */
+        }
+
+        h1 {
             font-size: 3em;
             margin-bottom: 20px;
         }
@@ -42,48 +53,84 @@
             color: #FF4500;
         }
 
-        .content {
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
             text-align: center;
-            padding: 50px 20px;
         }
-
-        .content img {
+        .main-container img {
             width: 80%;
             max-width: 600px;
             margin: 20px;
             border-radius: 10px;
         }
 
-        .priority-signup {
-            background-color: #fff;
-            padding: 30px 20px;
-            max-width: 500px;
-            margin: 40px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .content {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .signup-container {
+            flex: 1;
+            background-color: #e9ecef;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-top: 0;
         }
 
-        .priority-signup input[type="email"] {
+        .signup-container h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .signup-form input[type="email"] {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
 
-        .priority-signup button {
-            background-color: #003366;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            width: 100%;
+        .signup-form .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            margin: 0px 10;
         }
 
-        .priority-signup button:hover {
-            background-color: #FF4500;
+        .signup-form .checkbox-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .signup-form .checkbox-group input {
+            margin-right: 10px;
+        }
+
+        .signup-form button {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .signup-form button:hover {
+            background-color: #00509e;
         }
 
         footer {
@@ -92,36 +139,61 @@
             text-align: center;
             padding: 20px;
         }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .screenshot, .signup-container {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
+        <img src="logo-placeholder.png" alt="RevilAItion Logo"> <!-- Logo Placeholder -->
         <h1>Welcome to RevilAItion</h1>
         <p class="strapline">Transforming the way you learn with AI-powered education</p>
         <p class="cta"><strong>Learn Better, Faster.</strong></p>
     </header>
-
     <div class="content">
         <h2>Your Path to Smarter Learning Starts Here</h2>
         <p>RevilAItion is here to revolutionize the way you approach learning. Our AI-powered platform helps you master subjects faster and smarter, with tools that adapt to your personal learning style.</p>
-
-        <div class="screenshot-gallery">
+    </div>
+    
+    <div class="main-container">
+     <!-- Screenshot Section -->
+     <div class="screenshot-gallery">
             <!-- Replace these images with your actual platform screenshots -->
             <img src="https://via.placeholder.com/600x400" alt="Screenshot 1">
             <img src="https://via.placeholder.com/600x400" alt="Screenshot 2">
         </div>
-    </div>
-
-    <div class="priority-signup">
-        <h3>Get Priority Access</h3>
+        
+        <!-- Signup Section -->
+    <div class="signup-container">
+        <h3>Priority Access Signup</h3>
         <p>Sign up now to be the first to experience the future of learning!</p>
-        <form action="YOUR_SERVER_ENDPOINT" method="POST">
+        <form class="signup-form" action="/submit" method="post">
             <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Sign Up for Priority Access</button>
+            
+            <!-- User Type Checkbox -->
+            <div class="checkbox-group">
+                <label>Select your role:</label>
+                <label><input type="checkbox" name="user_type" value="parent" checked> Parent</label>
+                <label><input type="checkbox" name="user_type" value="child"> Child</label>
+                <label><input type="checkbox" name="user_type" value="teacher"> Teacher</label>
+            </div>
+
+            <button type="submit">Get Priority Access</button>
         </form>
     </div>
-
+    </div>
+   
     <footer>
         <p>&copy; 2025 RevilAItion. All rights reserved.</p>
     </footer>
