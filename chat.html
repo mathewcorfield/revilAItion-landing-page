@@ -1,0 +1,28 @@
+<div class="chat-container">
+  <textarea id="promptInput" placeholder="Ask me something..."></textarea>
+  <button onclick="sendPrompt()">Send</button>
+  <div id="responseDisplay"></div>
+</div>
+
+<script>
+  async function sendPrompt() {
+    const prompt = document.getElementById("promptInput").value;
+    const responseDiv = document.getElementById("responseDisplay");
+
+    responseDiv.textContent = "Thinking...";
+
+    try {
+      const res = await fetch("https://GPTChat.onrender.com/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+
+      const data = await res.json();
+      responseDiv.textContent = data.response;
+    } catch (err) {
+      responseDiv.textContent = "Error getting response.";
+      console.error(err);
+    }
+  }
+</script>
