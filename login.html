@@ -187,7 +187,7 @@ width: 100%;
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-const res = await fetch("https://your-api.railway.app/login", {
+const res = await fetch("https://auth-backend.onrender.com/login", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ username, password })
