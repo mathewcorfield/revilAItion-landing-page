@@ -187,16 +187,29 @@ width: 100%;
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-const res = await fetch("https://auth-backend.onrender.com/login", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ username, password })
-});
-
+try {
+    const res = await fetch("https://auth-backend.onrender.com/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
 
     const data = await res.json();
+
     message.textContent = data.message;
-    message.className = "message " + (data.status === 'success' || data.status === 'created' ? 'success' : '');
+    message.style.color = data.status === "success" ? "green" : "red";
+
+    if (data.status === "success") {
+      // Store token if backend returns it
+      localStorage.setItem("authToken", data.token);
+      // Redirect or update UI
+    }
+
+  } catch (err) {
+    console.error("Login failed:", err);
+    message.textContent = "Something went wrong. Please try again.";
+    message.style.color = "red";
+  }
   });
 </script>
 
